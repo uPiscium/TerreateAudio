@@ -1,0 +1,4 @@
+#ifndef __TERREATEAUDIO_HPP__
+#define __TERREATEAUDIO_HPP__
+
+#endif // __TERREATEAUDIO_HPP__
