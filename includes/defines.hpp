@@ -47,9 +47,13 @@ namespace TerreateAudio::Defines {
 using namespace TerreateCore::Defines;
 using namespace TerreateCore::Math;
 
+typedef TerreateCore::Core::TerreateObjectBase TerreateObjectBase;
+
 // OpenAL structs
 typedef ALCdevice Device;
 typedef ALCcontext Context;
+
+template <typename T> using Shared = std::shared_ptr<T>;
 
 enum class ALError {
   NO_ERROR = AL_NO_ERROR,
@@ -104,7 +108,9 @@ enum class SourceProperty {
   SOURCE_STATE = AL_SOURCE_STATE,
   BYTE_OFFSET = AL_BYTE_OFFSET,
   SAMPLE_OFFSET = AL_SAMPLE_OFFSET,
-  SEC_OFFSET = AL_SEC_OFFSET
+  SEC_OFFSET = AL_SEC_OFFSET,
+  BUFFER_QUEUED = AL_BUFFERS_QUEUED,
+  BUFFER_PROCESSED = AL_BUFFERS_PROCESSED
 };
 
 enum class SourceState {
@@ -121,8 +127,8 @@ enum class SourceType {
 };
 
 // Function entry points
-typedef Device *(*FPALCCREATECONTEXT)(Device *device, ALCint const *attribs);
-typedef Bool (*FPALCMAKECONTEXTCURRENT)(Device *device, Context *context);
+typedef Context *(*FPALCCREATECONTEXT)(Device *device, ALCint const *attribs);
+typedef Bool (*FPALCMAKECONTEXTCURRENT)(Context *context);
 typedef void (*FPALCPROCESSCONTEXT)(Context *context);
 typedef void (*FPALCSUSPENDCONTEXT)(Context *context);
 typedef void (*FPALCDESTROYCONTEXT)(Context *context);
