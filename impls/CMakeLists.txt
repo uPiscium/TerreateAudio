@@ -11,7 +11,7 @@ message(STATUS "C++ standard : " ${CMAKE_CXX_STANDARD})
 
 function(CloneOpenALSoft)
   message(STATUS "Cloning OpenAL-Soft...")
-set(ALSOFT_DLOPEN OFF)
+  set(ALSOFT_DLOPEN OFF)
   set(ALSOFT_UTILS OFF)
   set(ALSOFT_EXAMPLES OFF)
   FetchContent_Declare(
@@ -45,7 +45,8 @@ function(SetLibs)
 endfunction()
 
 function(Build)
-  add_library(${PROJECT_NAME} STATIC ALHelper.cpp alobj.cpp buffer.cpp context.cpp source.cpp)
+  add_library(${PROJECT_NAME} STATIC ALHelper.cpp alobj.cpp buffer.cpp
+                                     context.cpp source.cpp)
   set_target_properties(
     ${PROJECT_NAME} PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
                                LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
