@@ -2,7 +2,10 @@
 #define __TERREATEAUDIO_HPP__
 
 #include "ALHelper.hpp"
+#include "buffer.hpp"
+#include "context.hpp"
 #include "defines.hpp"
+#include "source.hpp"
 
 namespace TerreateAudio {
 using namespace TerreateAudio::Defines;
