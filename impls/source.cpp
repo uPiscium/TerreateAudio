@@ -118,18 +118,6 @@ Float ALSource::GetConeOuterAngle() const {
   return angle;
 }
 
-Int ALSource::GetNumQueuedBuffers() const {
-  Int buffers;
-  this->GetProperty(SourceProperty::BUFFER_QUEUED, buffers);
-  return buffers;
-}
-
-Int ALSource::GetNumProcessedBuffers() const {
-  Int buffers;
-  this->GetProperty(SourceProperty::BUFFER_PROCESSED, buffers);
-  return buffers;
-}
-
 SourceState ALSource::GetState() const {
   Int state;
   this->GetProperty(SourceProperty::SOURCE_STATE, state);
@@ -185,8 +173,16 @@ Bool ALSource::IsStopped() const {
   return state == static_cast<Int>(SourceState::STOPPED);
 }
 
-void ALSource::Stop() {
-  alSourceStop(mSource);
-  alSourcei(mSource, AL_BUFFER, 0);
+Int AudioStream::GetNumQueuedBuffers() const {
+  Int buffers;
+  this->GetProperty(SourceProperty::BUFFER_QUEUED, buffers);
+  return buffers;
 }
+
+Int AudioStream::GetNumProcessedBuffers() const {
+  Int buffers;
+  this->GetProperty(SourceProperty::BUFFER_PROCESSED, buffers);
+  return buffers;
+}
+
 } // namespace TerreateAudio::Core

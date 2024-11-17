@@ -42,8 +42,6 @@ public:
   Float GetConeOuterGain() const;
   Float GetConeInnerAngle() const;
   Float GetConeOuterAngle() const;
-  Int GetNumQueuedBuffers() const;
-  Int GetNumProcessedBuffers() const;
   SourceState GetState() const;
   Bool GetSourceRelative() const;
   Bool GetLooping() const;
@@ -127,10 +125,9 @@ public:
   Bool IsPaused() const;
   Bool IsStopped() const;
 
-  void Play();
-  void Stop();
-  void Pause();
-  void Rewind();
+  virtual void Play() { alSourcePlay(mSource); }
+  virtual void Stop() { alSourceStop(mSource); }
+  virtual void Pause() { alSourcePause(mSource); }
 };
 
 class AudioSource : public ALSource {
@@ -148,6 +145,9 @@ class AudioStream : public ALSource {
 public:
   AudioStream() = default;
   virtual ~AudioStream() = default;
+
+  Int GetNumQueuedBuffers() const;
+  Int GetNumProcessedBuffers() const;
 
   void QueueBuffer(AudioBuffer const &buffer) const {
     alSourceQueueBuffers(mSource, 1, buffer.GetBuffer());

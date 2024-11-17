@@ -15,7 +15,7 @@ private:
 public:
   TerreateAudioException(Str message) : mMessage(message) {}
 
-  const char *what() const noexcept override { return mMessage.c_str(); }
+  char const *what() const noexcept override { return mMessage.c_str(); }
 };
 
 class NullObjectException : public TerreateAudioException {
