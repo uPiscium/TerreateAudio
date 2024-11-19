@@ -5,6 +5,7 @@
 #include "buffer.hpp"
 #include "context.hpp"
 #include "defines.hpp"
+#include "exceptions.hpp"
 #include "source.hpp"
 
 namespace TerreateAudio {
