@@ -50,6 +50,10 @@ int main() {
     while (stream.IsPlaying()) {
     }
 
+    for (Uint i = 0; i < buffers.size(); ++i, ++h) {
+      stream.UnqueueBuffer(buffers[i]);
+    }
+
     stream.Stop();
   }
   Terminate();
