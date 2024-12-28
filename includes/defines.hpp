@@ -18,7 +18,7 @@ inline T ExtractFunction(Module module, Str const &function) {
   return reinterpret_cast<T>(GetProcAddress(module, function.c_str()));
 }
 
-static Str const DYNAMIC_LIBRARY_EXTENSION = "openal32.dll";
+static Str const OPENAL_LIB_PATH = "openal32.dll";
 } // namespace TerreateAudio::Dynamic
 #else
 #include <dlfcn.h>
@@ -56,7 +56,7 @@ typedef ALCcontext Context;
 template <typename T> using Shared = std::shared_ptr<T>;
 
 enum class ALError {
-  NO_ERROR = AL_NO_ERROR,
+  NO_ERR = AL_NO_ERROR,
   INVALID_NAME = AL_INVALID_NAME,
   INVALID_ENUM = AL_INVALID_ENUM,
   INVALID_VALUE = AL_INVALID_VALUE,
